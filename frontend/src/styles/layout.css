@@ -1,0 +1,563 @@
+
+/* =========================================
+   SMARTBIN - LAYOUT CSS
+   Sidebar, Header, Navigation & Responsive UI
+   ========================================= */
+
+:root {
+  --layout-navy: #102f49;
+  --layout-navy-light: #173f5f;
+  --layout-green: #19a974;
+  --layout-background: #f5f8fa;
+  --layout-white: #ffffff;
+  --layout-text: #17232d;
+  --layout-muted: #84919b;
+  --layout-border: #e2e9ed;
+}
+
+/* =========================================
+   APPLICATION LAYOUT
+   ========================================= */
+
+.app-shell {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  background: var(--layout-background);
+}
+
+.app-main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 100vh;
+  margin-left: 250px;
+}
+
+.page-content {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  padding: 28px 32px 42px;
+}
+
+.content-container {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.narrow-page {
+  max-width: 1180px;
+}
+
+/* =========================================
+   SIDEBAR
+   ========================================= */
+
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 1000;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 250px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  padding: 22px 16px;
+
+  color: #e4edf2;
+  background: linear-gradient(
+    180deg,
+    #102f49 0%,
+    #0b263b 100%
+  );
+
+  transition: transform 0.25s ease;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #31536a;
+  border-radius: 10px;
+}
+
+/* Brand */
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 0 8px 30px;
+}
+
+.brand-mark {
+  display: grid;
+  flex: 0 0 42px;
+  place-items: center;
+
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+
+  color: #062c20;
+  background: #2dc083;
+  box-shadow: 0 5px 15px rgba(45, 192, 131, 0.16);
+}
+
+.sidebar-brand strong {
+  display: block;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.sidebar-brand span {
+  display: block;
+  margin-top: 3px;
+  color: #9ab0be;
+  font-size: 10px;
+}
+
+/* Navigation section label */
+
+.sidebar-label {
+  padding: 0 11px 12px;
+
+  color: #8aa2b1;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+/* Navigation */
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  min-height: 44px;
+  padding: 0 12px;
+
+  border-radius: 10px;
+
+  color: #b4c6d1;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nav-item svg {
+  flex-shrink: 0;
+}
+
+.nav-item:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-item-active {
+  color: #fff;
+  background: #1d4b68;
+  box-shadow: inset 3px 0 var(--layout-green);
+}
+
+.nav-item-active svg {
+  color: #5be0a6;
+}
+
+/* Sidebar bottom area */
+
+.sidebar-bottom {
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+.sidebar-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 12px;
+
+  border: 1px solid #31536a;
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.sidebar-info .info-icon {
+  display: grid;
+  flex: 0 0 35px;
+  place-items: center;
+
+  width: 35px;
+  height: 35px;
+  border-radius: 9px;
+
+  color: #67e3ad;
+  background: rgba(25, 169, 116, 0.15);
+}
+
+.sidebar-info strong {
+  display: block;
+  color: #fff;
+  font-size: 11px;
+}
+
+.sidebar-info span {
+  display: block;
+  margin-top: 4px;
+  color: #9ab0be;
+  font-size: 9px;
+}
+
+.sidebar-footer {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 16px 5px 0;
+
+  color: #9ab0be;
+  font-size: 9px;
+}
+
+/* =========================================
+   TOP HEADER
+   ========================================= */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+
+  width: 100%;
+  min-height: 80px;
+  padding: 14px 32px;
+
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom: 1px solid var(--layout-border);
+  backdrop-filter: blur(10px);
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 0;
+}
+
+.eyebrow {
+  margin: 0;
+
+  color: #8a98a3;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.topbar h1 {
+  margin: 5px 0 0;
+
+  color: var(--layout-navy);
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+/* Header actions */
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Search input */
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  width: 270px;
+  height: 40px;
+  padding: 0 11px;
+
+  color: var(--layout-muted);
+  background: #fff;
+  border: 1px solid var(--layout-border);
+  border-radius: 10px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.search-box:focus-within {
+  border-color: rgba(25, 169, 116, 0.5);
+  box-shadow: 0 0 0 3px rgba(25, 169, 116, 0.08);
+}
+
+.search-box input {
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+
+  border: 0;
+  outline: 0;
+
+  color: var(--layout-text);
+  background: transparent;
+  font-size: 11px;
+}
+
+.search-box input::placeholder {
+  color: #a0abb2;
+}
+
+/* Header icon buttons */
+
+.icon-button,
+.menu-button {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+
+  width: 39px;
+  height: 39px;
+
+  color: #687783;
+  background: #f6f8f9;
+  border: 1px solid var(--layout-border);
+  border-radius: 10px;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.icon-button:hover,
+.menu-button:hover {
+  background: #edf2f4;
+}
+
+.notification-button {
+  position: relative;
+}
+
+.notification-button span {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+
+  background: #ef4444;
+}
+
+/* Operator profile */
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.avatar {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+
+  color: #11744f;
+  background: #ddf5eb;
+
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.user-text strong {
+  display: block;
+  color: var(--layout-text);
+  font-size: 11px;
+}
+
+.user-text span {
+  display: block;
+  margin-top: 3px;
+  color: var(--layout-muted);
+  font-size: 9px;
+}
+
+/* Hide menu controls on desktop */
+
+.menu-button {
+  display: none;
+}
+
+.mobile-close {
+  display: none;
+}
+
+.sidebar-overlay {
+  display: none;
+}
+
+/* =========================================
+   RESPONSIVE TABLET
+   ========================================= */
+
+@media (max-width: 1200px) {
+  .page-content {
+    padding: 24px;
+  }
+
+  .topbar {
+    padding: 14px 24px;
+  }
+
+  .search-box {
+    width: 220px;
+  }
+}
+
+/* =========================================
+   RESPONSIVE MOBILE NAVIGATION
+   ========================================= */
+
+@media (max-width: 950px) {
+  .app-main {
+    margin-left: 0;
+  }
+
+  .sidebar {
+    width: min(280px, 85vw);
+    transform: translateX(-100%);
+  }
+
+  .sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+
+    display: block;
+
+    background: rgba(5, 21, 32, 0.5);
+  }
+
+  .menu-button {
+    display: grid;
+  }
+
+  .mobile-close {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+
+    width: 34px;
+    height: 34px;
+    margin-left: auto;
+
+    color: #fff;
+    background: transparent;
+    border: 0;
+    border-radius: 8px;
+  }
+
+  .topbar {
+    padding: 12px 18px;
+  }
+
+  .search-box {
+    display: none;
+  }
+
+  .user-text,
+  .user-profile > svg {
+    display: none;
+  }
+
+  .page-content {
+    padding: 22px 18px 36px;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+   ========================================= */
+
+@media (max-width: 650px) {
+  .topbar {
+    min-height: 70px;
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .topbar h1 {
+    font-size: 18px;
+  }
+
+  .topbar-actions {
+    gap: 7px;
+  }
+
+  .page-content {
+    padding: 18px 12px 30px;
+  }
+
+  .sidebar-brand {
+    padding-bottom: 24px;
+  }
+
+  .avatar {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar,
+  .nav-item,
+  .icon-button,
+  .menu-button {
+    transition: none;
+  }
+}
