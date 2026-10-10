@@ -1,0 +1,835 @@
+
+/* =========================================
+   SMARTBIN - AI WASTE CLASSIFIER
+   File: src/style/classifier.css
+========================================= */
+
+/* Main page */
+
+.classifier-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  min-width: 0;
+  color: #172b4d;
+}
+
+/* Page header */
+
+.classifier-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.classifier-header h1 {
+  margin: 0 0 8px;
+  color: #142c4c;
+  font-size: 28px;
+  font-weight: 750;
+  letter-spacing: -0.7px;
+}
+
+.classifier-header p {
+  margin: 0;
+  color: #718096;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.classifier-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+
+.classifier-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 11px 16px;
+  border: 1px solid #dce5e9;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #34465e;
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.classifier-btn:hover {
+  border-color: #9ccbb2;
+  background: #f0f8f4;
+  transform: translateY(-1px);
+}
+
+.classifier-btn-primary {
+  border-color: #16865b;
+  background: #16865b;
+  color: #ffffff;
+}
+
+.classifier-btn-primary:hover {
+  border-color: #116b48;
+  background: #116b48;
+}
+
+.classifier-btn-danger {
+  border-color: #f1cecb;
+  background: #fff5f4;
+  color: #c4443b;
+}
+
+.classifier-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Main content layout */
+
+.classifier-content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.classifier-panel {
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid #e7edf0;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 3px 14px rgba(31, 56, 77, 0.035);
+}
+
+.classifier-panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.classifier-panel-header h2 {
+  margin: 0 0 7px;
+  color: #203752;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.classifier-panel-header p {
+  margin: 0;
+  color: #8793a4;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* Image upload area */
+
+.classifier-upload-area {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 280px;
+  padding: 28px 20px;
+  overflow: hidden;
+  border: 2px dashed #cfe1d6;
+  border-radius: 15px;
+  background: #f8fcf9;
+  color: #718096;
+  text-align: center;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.classifier-upload-area:hover,
+.classifier-upload-area.drag-active {
+  border-color: #16865b;
+  background: #eff9f3;
+}
+
+.classifier-upload-icon {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 17px;
+  background: #e2f4e8;
+  color: #16865b;
+}
+
+.classifier-upload-area h3 {
+  margin: 0;
+  color: #30445b;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.classifier-upload-area p {
+  max-width: 320px;
+  margin: 0;
+  color: #8793a4;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.classifier-upload-area input[type="file"] {
+  max-width: 100%;
+  color: #718096;
+  font-size: 12px;
+}
+
+.classifier-upload-area input[type="file"]::file-selector-button {
+  margin-right: 10px;
+  padding: 8px 12px;
+  border: 1px solid #dce5e9;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #34465e;
+  cursor: pointer;
+}
+
+.classifier-upload-area input[type="file"]::file-selector-button:hover {
+  border-color: #16865b;
+}
+
+/* Image preview */
+
+.classifier-image-preview-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 220px;
+  overflow: hidden;
+  border: 1px solid #e7edf0;
+  border-radius: 13px;
+  background: #f4f7f6;
+}
+
+.classifier-image-preview {
+  display: block;
+  width: 100%;
+  max-height: 360px;
+  object-fit: contain;
+}
+
+.classifier-remove-image {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #e7edf0;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #c4443b;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(31, 56, 77, 0.08);
+}
+
+.classifier-remove-image:hover {
+  background: #fff0ee;
+}
+
+/* Camera section */
+
+.classifier-camera-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.classifier-camera-preview {
+  display: block;
+  width: 100%;
+  max-height: 380px;
+  border-radius: 13px;
+  background: #152333;
+  object-fit: contain;
+}
+
+.classifier-camera-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 220px;
+  padding: 24px;
+  border: 1px dashed #dce5e9;
+  border-radius: 13px;
+  background: #f8faf9;
+  color: #8190a2;
+  text-align: center;
+}
+
+.classifier-camera-placeholder h3 {
+  margin: 0;
+  color: #30445b;
+  font-size: 15px;
+}
+
+.classifier-camera-placeholder p {
+  max-width: 300px;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* Capture and classify buttons */
+
+.classifier-action-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.classifier-action-row .classifier-btn {
+  flex: 1;
+}
+
+/* Classification results */
+
+.classifier-result {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.classifier-result-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 300px;
+  padding: 28px;
+  border: 1px dashed #dce5e9;
+  border-radius: 14px;
+  background: #fafcfb;
+  color: #8190a2;
+  text-align: center;
+}
+
+.classifier-result-empty h3 {
+  margin: 0;
+  color: #30445b;
+  font-size: 16px;
+}
+
+.classifier-result-empty p {
+  max-width: 330px;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* Result heading */
+
+.classifier-result-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid #d7eadf;
+  border-radius: 13px;
+  background: #f3fbf6;
+}
+
+.classifier-result-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 13px;
+  background: #dff3e6;
+  color: #16865b;
+}
+
+.classifier-result-title {
+  flex: 1;
+  min-width: 0;
+}
+
+.classifier-result-title span {
+  display: block;
+  margin-bottom: 5px;
+  color: #718b7c;
+  font-size: 11px;
+}
+
+.classifier-result-title h3 {
+  margin: 0;
+  color: #176b49;
+  font-size: 19px;
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+
+/* Category-specific result colours */
+
+.classifier-result-heading.wet {
+  border-color: #d7eadf;
+  background: #f3fbf6;
+}
+
+.classifier-result-heading.dry {
+  border-color: #d5e3f7;
+  background: #f4f8ff;
+}
+
+.classifier-result-heading.recyclable {
+  border-color: #d7eadf;
+  background: #f0faf4;
+}
+
+.classifier-result-heading.hazardous {
+  border-color: #f1d7c7;
+  background: #fff8f2;
+}
+
+.classifier-result-heading.dry .classifier-result-icon {
+  background: #e4efff;
+  color: #3976ca;
+}
+
+.classifier-result-heading.recyclable .classifier-result-icon {
+  background: #dff3e6;
+  color: #16865b;
+}
+
+.classifier-result-heading.hazardous .classifier-result-icon {
+  background: #fce9dc;
+  color: #b96928;
+}
+
+/* Confidence score */
+
+.classifier-confidence-section {
+  padding: 18px;
+  border: 1px solid #e7edf0;
+  border-radius: 13px;
+  background: #ffffff;
+}
+
+.classifier-confidence-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.classifier-confidence-header span {
+  color: #718096;
+  font-size: 12px;
+  font-weight: 550;
+}
+
+.classifier-confidence-value {
+  color: #16865b;
+  font-size: 16px;
+  font-weight: 750;
+}
+
+.classifier-confidence-track {
+  width: 100%;
+  height: 9px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #edf1f3;
+}
+
+.classifier-confidence-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: #16865b;
+  transition: width 0.35s ease;
+}
+
+/* Classification probability list */
+
+.classifier-probability-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.classifier-probability-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.classifier-probability-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.classifier-probability-label {
+  color: #34465e;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.classifier-probability-value {
+  color: #718096;
+  font-size: 12px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.classifier-probability-track {
+  width: 100%;
+  height: 7px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #edf1f3;
+}
+
+.classifier-probability-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: #16865b;
+  transition: width 0.35s ease;
+}
+
+.classifier-probability-fill.wet {
+  background: #279b6b;
+}
+
+.classifier-probability-fill.dry {
+  background: #5089d8;
+}
+
+.classifier-probability-fill.recyclable {
+  background: #7b9e42;
+}
+
+.classifier-probability-fill.hazardous {
+  background: #df8b43;
+}
+
+/* Disposal instructions */
+
+.classifier-disposal-card {
+  padding: 18px;
+  border: 1px solid #dce8f7;
+  border-radius: 13px;
+  background: #f5f9ff;
+}
+
+.classifier-disposal-heading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 12px;
+  color: #315e9c;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.classifier-disposal-card p {
+  margin: 0;
+  color: #5f7695;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.classifier-disposal-card ul {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin: 12px 0 0;
+  padding-left: 19px;
+  color: #5f7695;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* Waste handling tips */
+
+.classifier-tips-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.classifier-tip-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #526477;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.classifier-tip-icon {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border-radius: 7px;
+  background: #e8f7ef;
+  color: #16865b;
+}
+
+/* Classification history */
+
+.classifier-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.classifier-history-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 14px;
+  border: 1px solid #edf1f3;
+  border-radius: 12px;
+  background: #ffffff;
+  transition: background 0.2s ease;
+}
+
+.classifier-history-item:hover {
+  background: #f8fbf9;
+}
+
+.classifier-history-thumb {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #edf7f1;
+  color: #16865b;
+}
+
+.classifier-history-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.classifier-history-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.classifier-history-details h4 {
+  overflow: hidden;
+  margin: 0 0 5px;
+  color: #30445b;
+  font-size: 13px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.classifier-history-details p {
+  margin: 0;
+  color: #8793a4;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.classifier-history-badge {
+  padding: 6px 9px;
+  border-radius: 20px;
+  background: #e5f7ec;
+  color: #16734d;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Loading state */
+
+.classifier-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 140px;
+  padding: 24px;
+  color: #718096;
+  font-size: 13px;
+}
+
+.classifier-spinner {
+  width: 22px;
+  height: 22px;
+  border: 3px solid #dcefe4;
+  border-top-color: #16865b;
+  border-radius: 50%;
+  animation: classifier-spin 0.8s linear infinite;
+}
+
+@keyframes classifier-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error and success messages */
+
+.classifier-message {
+  padding: 13px 16px;
+  border: 1px solid #d7eadf;
+  border-radius: 10px;
+  background: #f0faf4;
+  color: #176b49;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.classifier-message.error {
+  border-color: #f2c9c5;
+  background: #fff3f2;
+  color: #b83e36;
+}
+
+.classifier-message.warning {
+  border-color: #f2dfb9;
+  background: #fff9ed;
+  color: #a86a05;
+}
+
+/* Information banner */
+
+.classifier-info-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 18px;
+  border: 1px solid #dce8f7;
+  border-radius: 12px;
+  background: #f5f9ff;
+  color: #3976ca;
+}
+
+.classifier-info-banner h3 {
+  margin: 0 0 5px;
+  color: #315e9c;
+  font-size: 13px;
+}
+
+.classifier-info-banner p {
+  margin: 0;
+  color: #5f7695;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* Responsive layout */
+
+@media (max-width: 1100px) {
+  .classifier-content-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .classifier-page {
+    gap: 18px;
+  }
+
+  .classifier-header h1 {
+    font-size: 23px;
+  }
+
+  .classifier-header-actions {
+    width: 100%;
+  }
+
+  .classifier-header-actions .classifier-btn {
+    flex: 1;
+  }
+
+  .classifier-panel {
+    padding: 16px;
+  }
+
+  .classifier-panel-header {
+    flex-direction: column;
+  }
+
+  .classifier-upload-area {
+    min-height: 230px;
+    padding: 22px 14px;
+  }
+
+  .classifier-action-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .classifier-action-row .classifier-btn {
+    width: 100%;
+  }
+
+  .classifier-result-heading {
+    align-items: flex-start;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 440px) {
+  .classifier-header-actions {
+    flex-direction: column;
+  }
+
+  .classifier-header-actions .classifier-btn {
+    width: 100%;
+  }
+
+  .classifier-upload-icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .classifier-result-title h3 {
+    font-size: 16px;
+  }
+
+  .classifier-history-item {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .classifier-history-badge {
+    margin-left: 61px;
+  }
+}
