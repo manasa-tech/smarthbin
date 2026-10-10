@@ -8,6 +8,7 @@ import "leaflet/dist/leaflet.css";
 import "./styles/global.css";
 import "../styles/prediction.css";
 import "../styles/report.css";
+import "../styles/simulator.css";
 import App from "./App";
 import "../styles/route.css";
 ReactDOM.createRoot(document.getElementById("root")).render(

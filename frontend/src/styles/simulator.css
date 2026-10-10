@@ -1,0 +1,844 @@
+
+/* =========================================
+   SMARTBIN - CITY SIMULATOR
+   File: src/styles/simulator.css
+========================================= */
+
+/* Main simulator page */
+
+.simulator-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  min-width: 0;
+  color: #172b4d;
+}
+
+/* Page header */
+
+.simulator-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.simulator-header h1 {
+  margin: 0 0 8px;
+  color: #142c4c;
+  font-size: 28px;
+  font-weight: 750;
+  letter-spacing: -0.7px;
+}
+
+.simulator-header p {
+  margin: 0;
+  color: #718096;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.simulator-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+
+.simulator-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 10px 16px;
+  border: 1px solid #dce5e9;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #34465e;
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.simulator-btn:hover {
+  border-color: #9ccbb2;
+  background: #f0f8f4;
+  transform: translateY(-1px);
+}
+
+.simulator-btn-primary {
+  border-color: #16865b;
+  background: #16865b;
+  color: #ffffff;
+}
+
+.simulator-btn-primary:hover {
+  border-color: #116b48;
+  background: #116b48;
+}
+
+.simulator-btn-danger {
+  border-color: #f1cecb;
+  background: #fff5f4;
+  color: #c4443b;
+}
+
+.simulator-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Simulator statistics */
+
+.simulator-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.simulator-stat-card {
+  padding: 20px;
+  border: 1px solid #e7edf0;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 3px 14px rgba(31, 56, 77, 0.035);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.simulator-stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(31, 56, 77, 0.07);
+}
+
+.simulator-stat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 17px;
+}
+
+.simulator-stat-label {
+  color: #718096;
+  font-size: 13px;
+  font-weight: 550;
+}
+
+.simulator-stat-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #e8f7ef;
+  color: #16865b;
+}
+
+.simulator-stat-icon.warning {
+  background: #fff4df;
+  color: #c78316;
+}
+
+.simulator-stat-icon.danger {
+  background: #fff0ee;
+  color: #d84b42;
+}
+
+.simulator-stat-icon.info {
+  background: #eaf2ff;
+  color: #3976ca;
+}
+
+.simulator-stat-value {
+  margin: 0 0 8px;
+  color: #172b4d;
+  font-size: 29px;
+  font-weight: 750;
+  letter-spacing: -0.8px;
+}
+
+.simulator-stat-description {
+  margin: 0;
+  color: #8491a3;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* Main content grid */
+
+.simulator-content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.simulator-panel {
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid #e7edf0;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 3px 14px rgba(31, 56, 77, 0.035);
+}
+
+.simulator-panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.simulator-panel-header h2 {
+  margin: 0 0 7px;
+  color: #203752;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.simulator-panel-header p {
+  margin: 0;
+  color: #8793a4;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* Simulation controls */
+
+.simulator-control-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.simulator-control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.simulator-control-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.simulator-control-heading label {
+  color: #34465e;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.simulator-control-value {
+  color: #16865b;
+  font-size: 14px;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+}
+
+.simulator-control-description {
+  margin: 0;
+  color: #8793a4;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+/* Fill level slider */
+
+.simulator-slider {
+  width: 100%;
+  height: 6px;
+  margin: 9px 0;
+  border-radius: 20px;
+  outline: none;
+  background: #e4ede7;
+  accent-color: #16865b;
+  cursor: pointer;
+}
+
+.simulator-slider:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.simulator-slider-labels {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #8793a4;
+  font-size: 10px;
+}
+
+/* Simulation action area */
+
+.simulator-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-top: 18px;
+  border-top: 1px solid #edf1f3;
+}
+
+.simulator-actions .simulator-btn {
+  flex: 1;
+}
+
+.simulator-status-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 13px 15px;
+  border: 1px solid #d7eadf;
+  border-radius: 10px;
+  background: #f0faf4;
+  color: #176b49;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.simulator-status-message.warning {
+  border-color: #f2dfb9;
+  background: #fff9ed;
+  color: #a86a05;
+}
+
+.simulator-status-message.error {
+  border-color: #f2c9c5;
+  background: #fff3f2;
+  color: #b83e36;
+}
+
+/* Bin cards grid */
+
+.simulator-bins-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.simulator-bin-card {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid #e7edf0;
+  border-radius: 14px;
+  background: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.simulator-bin-card:hover {
+  border-color: #cde4d5;
+  box-shadow: 0 6px 18px rgba(31, 56, 77, 0.05);
+}
+
+.simulator-bin-card.selected {
+  border-color: #16865b;
+  box-shadow: 0 0 0 2px rgba(22, 134, 91, 0.08);
+}
+
+.simulator-bin-card.critical {
+  border-color: #f1d0cd;
+}
+
+.simulator-bin-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.simulator-bin-info {
+  min-width: 0;
+}
+
+.simulator-bin-id {
+  margin: 0 0 5px;
+  color: #203752;
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.simulator-bin-location {
+  margin: 0;
+  color: #8793a4;
+  font-size: 11px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+/* Bin status badges */
+
+.simulator-bin-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 5px 8px;
+  border-radius: 20px;
+  background: #e5f7ec;
+  color: #16734d;
+  font-size: 9px;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.simulator-bin-status.medium {
+  background: #fff4df;
+  color: #a86a05;
+}
+
+.simulator-bin-status.high {
+  background: #ffebe9;
+  color: #c83d35;
+}
+
+/* Bin illustration */
+
+.simulator-bin-illustration {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 112px;
+  margin: 8px 0 18px;
+}
+
+.simulator-bin-visual {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  width: 57px;
+  height: 88px;
+  overflow: hidden;
+  border: 2px solid #d7e2dd;
+  border-top: none;
+  border-radius: 5px 5px 12px 12px;
+  background: #f0f5f2;
+}
+
+.simulator-bin-visual::before {
+  position: absolute;
+  top: 0;
+  left: -3px;
+  width: calc(100% + 6px);
+  height: 9px;
+  border-radius: 4px;
+  background: #a8bdb1;
+  content: "";
+}
+
+.simulator-bin-lid {
+  position: absolute;
+  top: -2px;
+  left: -5px;
+  width: calc(100% + 10px);
+  height: 8px;
+  border-radius: 4px;
+  background: #95ad9f;
+}
+
+.simulator-bin-fill {
+  width: 100%;
+  min-height: 0;
+  background: #55b886;
+  transition: height 0.35s ease, background 0.35s ease;
+}
+
+.simulator-bin-fill.medium {
+  background: #e7ad43;
+}
+
+.simulator-bin-fill.high {
+  background: #df655b;
+}
+
+.simulator-bin-icon {
+  position: absolute;
+  top: 31px;
+  left: 50%;
+  z-index: 2;
+  color: #567564;
+  transform: translateX(-50%);
+}
+
+/* Fill percentage */
+
+.simulator-bin-fill-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 9px;
+}
+
+.simulator-bin-fill-label {
+  color: #718096;
+  font-size: 11px;
+}
+
+.simulator-bin-fill-percent {
+  color: #203752;
+  font-size: 15px;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+}
+
+.simulator-progress-track {
+  width: 100%;
+  height: 7px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #edf1f3;
+}
+
+.simulator-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: #16865b;
+  transition: width 0.35s ease;
+}
+
+.simulator-progress-fill.medium {
+  background: #e7a43b;
+}
+
+.simulator-progress-fill.high {
+  background: #df5c53;
+}
+
+/* Bin editing controls */
+
+.simulator-bin-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 18px;
+  padding-top: 15px;
+  border-top: 1px solid #edf1f3;
+}
+
+.simulator-bin-control-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.simulator-bin-control-heading label {
+  color: #718096;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.simulator-bin-control-heading span {
+  color: #16865b;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.simulator-bin-slider {
+  width: 100%;
+  height: 5px;
+  margin: 5px 0;
+  accent-color: #16865b;
+  cursor: pointer;
+}
+
+.simulator-bin-slider:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Map */
+
+.simulator-map-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  min-height: 280px;
+  overflow: hidden;
+  border: 1px solid #e3e9e9;
+  border-radius: 13px;
+  background: #eef3f0;
+}
+
+.simulator-map {
+  width: 100%;
+  height: 100%;
+}
+
+.simulator-map .leaflet-container {
+  width: 100%;
+  height: 100%;
+  font-family: inherit;
+}
+
+.simulator-map .leaflet-popup-content-wrapper {
+  border-radius: 10px;
+}
+
+.simulator-map .leaflet-popup-content {
+  margin: 12px 14px;
+  color: #34465e;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.simulator-map .leaflet-popup-content strong {
+  color: #203752;
+}
+
+/* Map legend */
+
+.simulator-map-legend {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 13px;
+  border: 1px solid #e5ebeb;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 4px 14px rgba(31, 56, 77, 0.1);
+}
+
+.simulator-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #526477;
+  font-size: 11px;
+}
+
+.simulator-legend-dot {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #16865b;
+}
+
+.simulator-legend-dot.medium {
+  background: #e7a43b;
+}
+
+.simulator-legend-dot.high {
+  background: #df5c53;
+}
+
+/* Map placeholder */
+
+.simulator-map-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  padding: 24px;
+  color: #8190a2;
+  text-align: center;
+}
+
+.simulator-map-placeholder h3 {
+  margin: 0;
+  color: #30445b;
+  font-size: 15px;
+}
+
+.simulator-map-placeholder p {
+  max-width: 340px;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* Table */
+
+.simulator-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #e7edf0;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.simulator-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.simulator-table th {
+  padding: 14px 16px;
+  border-bottom: 1px solid #e7edf0;
+  background: #f7faf9;
+  color: #758397;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.simulator-table td {
+  padding: 15px 16px;
+  border-bottom: 1px solid #edf1f3;
+  color: #526477;
+  font-size: 12px;
+}
+
+.simulator-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.simulator-table tbody tr:hover {
+  background: #f8fbf9;
+}
+
+.simulator-table-bin {
+  color: #203752;
+  font-weight: 700;
+}
+
+/* Empty state */
+
+.simulator-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 200px;
+  padding: 28px;
+  color: #8190a2;
+  text-align: center;
+}
+
+.simulator-empty-state h3 {
+  margin: 0;
+  color: #30445b;
+  font-size: 15px;
+}
+
+.simulator-empty-state p {
+  max-width: 360px;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* Responsive layouts */
+
+@media (max-width: 1200px) {
+  .simulator-bins-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .simulator-content-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 850px) {
+  .simulator-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .simulator-map-container {
+    height: 350px;
+  }
+}
+
+@media (max-width: 600px) {
+  .simulator-page {
+    gap: 18px;
+  }
+
+  .simulator-header h1 {
+    font-size: 23px;
+  }
+
+  .simulator-header-actions {
+    width: 100%;
+  }
+
+  .simulator-header-actions .simulator-btn {
+    flex: 1;
+  }
+
+  .simulator-panel {
+    padding: 16px;
+  }
+
+  .simulator-panel-header {
+    flex-direction: column;
+  }
+
+  .simulator-bins-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .simulator-bin-card {
+    padding: 18px;
+  }
+
+  .simulator-map-container {
+    height: 300px;
+    min-height: 250px;
+  }
+
+  .simulator-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .simulator-actions .simulator-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 440px) {
+  .simulator-stats-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .simulator-stat-card {
+    padding: 16px;
+  }
+
+  .simulator-stat-value {
+    font-size: 25px;
+  }
+
+  .simulator-header-actions {
+    flex-direction: column;
+  }
+
+  .simulator-header-actions .simulator-btn {
+    width: 100%;
+  }
+
+  .simulator-map-legend {
+    right: 8px;
+    bottom: 8px;
+    padding: 10px;
+  }
+}
