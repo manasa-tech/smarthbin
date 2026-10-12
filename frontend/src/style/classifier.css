@@ -1,0 +1,308 @@
+﻿/* SmartBin — Modern AI Waste Classifier */
+.classifier-page {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 32px;
+  color: #172b4d;
+  box-sizing: border-box;
+}
+
+.classifier-page *,
+.classifier-page *::before,
+.classifier-page *::after {
+  box-sizing: border-box;
+}
+
+.classifier-page .page-heading {
+  margin-bottom: 30px;
+}
+
+.classifier-page .page-heading h1 {
+  margin: 0 0 10px;
+  color: #172b4d;
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 750;
+  letter-spacing: -1.2px;
+}
+
+.classifier-page .page-heading p {
+  margin: 0;
+  color: #647995;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.classifier-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr);
+  align-items: start;
+  gap: 24px;
+}
+
+.classifier-card {
+  min-width: 0;
+  padding: 26px;
+  border: 1px solid #e1e8ef;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 6px 24px rgba(23, 43, 77, .045);
+}
+
+.classifier-card h2 {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin: 0 0 22px;
+  color: #172b4d;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.classifier-card h2 svg {
+  width: 23px;
+  height: 23px;
+  color: #15803d;
+}
+
+.classifier-dropzone {
+  display: flex;
+  min-height: 220px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 28px;
+  border: 2px dashed #b8cbbf;
+  border-radius: 16px;
+  background: #f5faf6;
+  text-align: center;
+  transition: border-color .2s ease, background .2s ease;
+}
+
+.classifier-dropzone:hover {
+  border-color: #15803d;
+  background: #eef8f0;
+}
+
+.classifier-dropzone > svg {
+  width: 42px;
+  height: 42px;
+  color: #15803d;
+}
+
+.classifier-dropzone strong {
+  color: #172b4d;
+  font-size: 16px;
+}
+
+.classifier-dropzone p {
+  margin: 0;
+  color: #647995;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.classifier-file-input {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid #e1e8ef;
+  border-radius: 12px;
+  background: #fff;
+  color: #344563;
+  font-size: 13px;
+}
+
+.classifier-file-input::file-selector-button {
+  margin-right: 12px;
+  padding: 9px 14px;
+  border: 0;
+  border-radius: 9px;
+  background: #e8f5eb;
+  color: #166534;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.classifier-preview {
+  display: block;
+  width: 100%;
+  max-height: 300px;
+  margin-top: 18px;
+  border: 1px solid #e1e8ef;
+  border-radius: 14px;
+  object-fit: contain;
+  background: #f8fafc;
+}
+
+.classifier-primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 100%;
+  margin-top: 16px;
+  padding: 14px 18px;
+  border: 0;
+  border-radius: 12px;
+  background: #15803d;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  box-shadow: 0 5px 12px rgba(21, 128, 61, .15);
+  transition: background .2s ease, transform .2s ease;
+}
+
+.classifier-primary-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: #166534;
+}
+
+.classifier-primary-button:disabled {
+  cursor: not-allowed;
+  opacity: .55;
+  box-shadow: none;
+}
+
+.classifier-result-empty {
+  display: flex;
+  min-height: 300px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 26px;
+  border: 1px dashed #d6e1da;
+  border-radius: 16px;
+  background: #f8fbf9;
+  text-align: center;
+}
+
+.classifier-result-icon {
+  display: flex;
+  width: 76px;
+  height: 76px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  border-radius: 22px;
+  background: #e8f5eb;
+  color: #15803d;
+}
+
+.classifier-result-icon svg {
+  width: 38px;
+  height: 38px;
+}
+
+.classifier-result-empty h3 {
+  margin: 0 0 9px;
+  color: #172b4d;
+  font-size: 19px;
+}
+
+.classifier-result-empty p {
+  max-width: 300px;
+  margin: 0;
+  color: #647995;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.classifier-result-content {
+  padding: 22px;
+  border: 1px solid #dcece0;
+  border-radius: 16px;
+  background: #f7fbf8;
+}
+
+.classifier-result-content h3 {
+  margin: 0 0 12px;
+  color: #166534;
+  font-size: 23px;
+  overflow-wrap: anywhere;
+}
+
+.classifier-result-content p {
+  color: #52667f;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.classifier-confidence {
+  margin-top: 20px;
+}
+
+.classifier-confidence-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 9px;
+  color: #344563;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.classifier-confidence-track {
+  height: 9px;
+  overflow: hidden;
+  border-radius: 99px;
+  background: #e2e8f0;
+}
+
+.classifier-confidence-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: #15803d;
+  transition: width .3s ease;
+}
+
+.classifier-tip {
+  margin-top: 18px;
+  padding: 15px;
+  border: 1px solid #dbeafe;
+  border-radius: 12px;
+  background: #eff6ff;
+  color: #1e40af;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.classifier-error {
+  margin-top: 16px;
+  padding: 13px 15px;
+  border: 1px solid #fecaca;
+  border-radius: 12px;
+  background: #fff1f2;
+  color: #b91c1c;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+@media (max-width: 1000px) {
+  .classifier-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .classifier-result-empty {
+    min-height: 240px;
+  }
+}
+
+@media (max-width: 600px) {
+  .classifier-page {
+    padding: 18px;
+  }
+
+  .classifier-card {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .classifier-dropzone {
+    min-height: 190px;
+    padding: 18px;
+  }
+}

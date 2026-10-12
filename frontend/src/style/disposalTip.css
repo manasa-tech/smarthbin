@@ -1,0 +1,121 @@
+﻿.disposal-tip {
+  background: #ffffff;
+  border: 1px solid #e2ebe5;
+  border-radius: 16px;
+  overflow: hidden;
+  color: #172b4d;
+}
+
+.disposal-tip-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 18px;
+  background: #ffffff;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.disposal-tip-heading-icon,
+.disposal-tip-item-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: #218653;
+  background: #e6f5eb;
+  border-radius: 12px;
+}
+
+.disposal-tip-heading-icon {
+  width: 42px;
+  height: 42px;
+}
+
+.disposal-tip-heading-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.disposal-tip-heading-text strong {
+  font-size: 15px;
+}
+
+.disposal-tip-heading-text small {
+  color: #8490a2;
+  font-size: 11px;
+}
+
+.disposal-tip-content {
+  padding: 0 18px 18px;
+}
+
+.disposal-tip-recommendation {
+  padding: 14px;
+  background: #f0f8f2;
+  border: 1px solid #e1f0e5;
+  border-radius: 12px;
+}
+
+.disposal-tip-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #218653;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.disposal-tip-recommendation p,
+.disposal-tip-item p {
+  color: #637287;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.disposal-tip-recommendation p {
+  margin: 8px 0 0;
+}
+
+.disposal-tip-list {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  margin-top: 20px;
+}
+
+.disposal-tip-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.disposal-tip-item-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+}
+
+.disposal-tip-item strong {
+  display: block;
+  margin: 1px 0 5px;
+  font-size: 13px;
+}
+
+.disposal-tip-item p {
+  margin: 0;
+}
+
+.disposal-tip-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid #edf1ee;
+  color: #218653;
+  font-size: 11px;
+}

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+﻿import { useState } from "react";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 
 import Sidebar from "./components/layout/Sidebar";
 import Header from "./components/layout/Header";
@@ -11,99 +11,60 @@ import RouteOptimizer from "./pages/RouteOptimizer";
 import OverflowPrediction from "./pages/OverflowPrediction";
 import CitizenReports from "./pages/CitizenReports";
 import ReportsHistory from "./pages/ReportsHistory";
+import BinDetails from "./pages/BinDetails";
 
-function App() {
-  const [mobileOpen, setMobileOpen] = useState(false);
+import "./styles/app.css";
+
+export default function App() {
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const location = useLocation();
+
+  const isBinDetails = location.pathname.startsWith("/bins/");
+
+  const toggleSidebar = () => {
+    setSidebarCollapsed((previous) => !previous);
+    setMobileSidebarOpen(false);
+  };
 
   return (
     <div className="app-shell">
-      {/* Sidebar */}
-      <Sidebar
-        mobileOpen={mobileOpen}
-        onClose={() => setMobileOpen(false)}
-      />
+      <div className={`sidebar-slot ${sidebarCollapsed ? "sidebar-slot-closed" : ""}`}>
+        <Sidebar
+          collapsed={sidebarCollapsed}
+          onToggle={toggleSidebar}
+          mobileOpen={mobileSidebarOpen}
+          onClose={() => setMobileSidebarOpen(false)}
+        />
+      </div>
 
-      {/* Main application area */}
       <div className="app-main">
-
-        {/* Top header */}
         <Header
-          onMenu={() => setMobileOpen(true)}
+          onMenuClick={toggleSidebar}
+          user={{ name: "SmartBin Admin", role: "Administrator" }}
         />
 
-        {/* Page content */}
-        <main className="page-content">
+        <main className="app-content">
           <Routes>
-
-            {/* Default route */}
-            <Route
-              path="/"
-              element={
-                <Navigate
-                  to="/dashboard"
-                  replace
-                />
-              }
-            />
-
-            {/* Main Dashboard */}
-            <Route
-              path="/dashboard"
-              element={<Dashboard />}
-            />
-
-            {/* City Simulator */}
-            <Route
-              path="/simulator"
-              element={<CitySimulator />}
-            />
-
-            {/* AI Waste Classifier */}
-            <Route
-              path="/classifier"
-              element={<AIClassifier />}
-            />
-
-            {/* Route Optimizer */}
-            <Route
-              path="/route"
-              element={<RouteOptimizer />}
-            />
-
-            {/* Overflow Prediction */}
-            <Route
-              path="/prediction"
-              element={<OverflowPrediction />}
-            />
-
-            {/* Citizen Reports */}
-            <Route
-              path="/reports"
-              element={<CitizenReports />}
-            />
-
-            {/* Report History */}
-            <Route
-              path="/history"
-              element={<ReportsHistory />}
-            />
-
-            {/* Unknown URL */}
-            <Route
-              path="*"
-              element={
-                <Navigate
-                  to="/dashboard"
-                  replace
-                />
-              }
-            />
-
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/simulator" element={<CitySimulator />} />
+            <Route path="/classifier" element={<AIClassifier />} />
+            <Route path="/routes" element={<RouteOptimizer />} />
+            <Route path="/predictions" element={<OverflowPrediction />} />
+            <Route path="/reports" element={<CitizenReports />} />
+            <Route path="/reports-history" element={<ReportsHistory />} />
+            <Route path="/bins/:id" element={<BinDetails />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
+
+        {!isBinDetails && (
+          <footer className="app-footer">
+            <span>SmartBin AI</span>
+            <span>Smart Waste Management Dashboard</span>
+          </footer>
+        )}
       </div>
     </div>
   );
 }
-
-export default App;

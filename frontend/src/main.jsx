@@ -1,16 +1,11 @@
-import React from "react";
+﻿import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { Toaster } from "sonner";
-import "./styles/global.css";
-import "./styles/layout.css";
 import "leaflet/dist/leaflet.css";
 import "./styles/global.css";
-import "../styles/prediction.css";
-import "../styles/report.css";
-import "../styles/simulator.css";
-import App from "./App";
-import "../styles/route.css";
+import App from "./App.jsx";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
