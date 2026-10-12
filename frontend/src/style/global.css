@@ -1,0 +1,27 @@
+﻿
+/* Fix unwanted gap between sidebar and main content */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.app-layout,
+.app-container,
+.main-layout,
+.main-content,
+.page-container {
+  margin-left: 0;
+  padding-left: 0;
+  gap: 0;
+}
+
+.app-layout,
+.app-container,
+.main-layout {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+

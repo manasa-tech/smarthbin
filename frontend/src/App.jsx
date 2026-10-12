@@ -12,7 +12,7 @@ import OverflowPrediction from "./pages/OverflowPrediction";
 import CitizenReports from "./pages/CitizenReports";
 import ReportsHistory from "./pages/ReportsHistory";
 import BinDetails from "./pages/BinDetails";
-
+import LandingPage from "./pages/LandingPage";
 import "./styles/app.css";
 
 export default function App() {
@@ -46,7 +46,9 @@ export default function App() {
 
         <main className="app-content">
           <Routes>
-            <Route path="/" element={<Dashboard />} />
+      <Route path="/" element={<Dashboard />} />
+      <Route path="/home" element={<LandingPage />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/simulator" element={<CitySimulator />} />
             <Route path="/classifier" element={<AIClassifier />} />
             <Route path="/routes" element={<RouteOptimizer />} />
@@ -68,3 +70,8 @@ export default function App() {
     </div>
   );
 }
+
+
+
+
+
