@@ -23,12 +23,29 @@ export default function Profile() {
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const [profile, setProfile] = useState({
-    name: "SmartBin Admin",
-    email: "admin@smartbin.com",
-    phone: "+91 98765 43210",
-    department: "Waste Management",
-    location: "Bengaluru, Karnataka",
+  const [profile, setProfile] = useState(() => {
+    try {
+      const savedUser = localStorage.getItem("smartbinUser");
+      const user = savedUser ? JSON.parse(savedUser) : {};
+
+      return {
+        name: user.name || "",
+        email: user.email || "",
+        phone: user.phone || "",
+        role: user.role || "Public User",
+        department: "Waste Management",
+        location: "Bengaluru, Karnataka",
+      };
+    } catch {
+      return {
+        name: "",
+        email: "",
+        phone: "",
+        role: "Public User",
+        department: "Waste Management",
+        location: "Bengaluru, Karnataka",
+      };
+    }
   });
 
   const [passwords, setPasswords] = useState({
@@ -63,8 +80,25 @@ export default function Profile() {
   }
 
   function saveProfile() {
-    setEditing(false);
-    setSaved("Profile changes are shown locally. Connect a backend to save them permanently.");
+    try {
+      const existing = localStorage.getItem("smartbinUser");
+      const user = existing ? JSON.parse(existing) : {};
+
+      const updatedUser = {
+        ...user,
+        name: profile.name.trim(),
+        email: profile.email.trim(),
+        phone: profile.phone.trim(),
+        role: profile.role || "Public User",
+      };
+
+      localStorage.setItem("smartbinUser", JSON.stringify(updatedUser));
+      setProfile((old) => ({ ...old, ...updatedUser }));
+      setEditing(false);
+      setSaved("Profile saved successfully.");
+    } catch {
+      setSaved("Could not save the profile. Please try again.");
+    }
   }
 
   function updatePassword(e) {
@@ -126,7 +160,7 @@ export default function Profile() {
             <label>Email Address<input disabled={!editing} type="email" value={profile.email} onChange={(e) => updateProfile("email", e.target.value)}/></label>
 
             <div className="profile-field-icon"><ShieldCheck/></div>
-            <label>Role<span className="profile-role">Public User</span></label>
+            <label>Role<span className="profile-role">{profile.role}</span></label>
 
             <div className="profile-field-icon"><Phone/></div>
             <label>Phone Number<input disabled={!editing} value={profile.phone} onChange={(e) => updateProfile("phone", e.target.value)}/></label>
@@ -190,4 +224,5 @@ export default function Profile() {
     </div>
   );
 }
+
 

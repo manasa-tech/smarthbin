@@ -45,7 +45,39 @@ export default function Auth() {
       return;
     }
 
-    // Demo navigation only. Connect backend authentication later.
+    if (mode === "signup") {
+      const user = {
+        name: form.name.trim(),
+        email: form.email.trim(),
+        phone: form.phone.trim(),
+        role: "Public User",
+      };
+
+      if (!user.name) {
+        setError("Please enter your full name.");
+        return;
+      }
+
+      localStorage.setItem("smartbinUser", JSON.stringify(user));
+    } else {
+      const savedUser = localStorage.getItem("smartbinUser");
+
+      try {
+        if (savedUser) {
+          const user = JSON.parse(savedUser);
+
+          if (
+            user.email &&
+            user.email.toLowerCase() === form.email.trim().toLowerCase()
+          ) {
+            localStorage.setItem("smartbinUser", JSON.stringify(user));
+          }
+        }
+      } catch {
+        localStorage.removeItem("smartbinUser");
+      }
+    }
+
     navigate("/dashboard");
   };
 
@@ -273,3 +305,4 @@ export default function Auth() {
     </div>
   );
 }
+
