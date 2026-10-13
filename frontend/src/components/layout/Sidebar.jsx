@@ -1,6 +1,6 @@
 ﻿import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import {
+import { UserRound,
   LayoutDashboard,
   Map,
   Brain,
@@ -15,13 +15,14 @@ import {
 } from "lucide-react";
 
 const navigation = [
-  { label: "Dashboard", path: "/", icon: LayoutDashboard },
+  { label: "Dashboard", path: "/dashboard", icon: LayoutDashboard },
   { label: "City Simulator", path: "/simulator", icon: Map },
   { label: "AI Waste Classifier", path: "/classifier", icon: Brain },
   { label: "Route Optimizer", path: "/routes", icon: Route },
   { label: "Overflow Prediction", path: "/predictions", icon: TrendingUp },
   { label: "Citizen Reports", path: "/reports", icon: FileText },
   { label: "Reports History", path: "/reports-history", icon: History },
+  { label: "Profile", path: "/profile", icon: UserRound },
 ];
 
 export default function Sidebar({
@@ -307,3 +308,6 @@ const iconButtonStyle = {
   color: "#e2e8f0",
   cursor: "pointer",
 };
+
+
+

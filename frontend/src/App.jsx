@@ -1,9 +1,16 @@
-﻿import { useState } from "react";
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+﻿import AuthPage from "./pages/AuthPage";
+import LandingPageNew from "./pages/LandingPageNew";
+
+import React from "react";
+import {
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
 
 import Sidebar from "./components/layout/Sidebar";
-import Header from "./components/layout/Header";
-
+import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import CitySimulator from "./pages/CitySimulator";
 import AIClassifier from "./pages/AIClassifier";
@@ -12,64 +19,47 @@ import OverflowPrediction from "./pages/OverflowPrediction";
 import CitizenReports from "./pages/CitizenReports";
 import ReportsHistory from "./pages/ReportsHistory";
 import BinDetails from "./pages/BinDetails";
-import LandingPage from "./pages/LandingPage";
 import "./styles/app.css";
 
-export default function App() {
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+function AppContent() {
   const location = useLocation();
 
-  const isBinDetails = location.pathname.startsWith("/bins/");
-
-  const toggleSidebar = () => {
-    setSidebarCollapsed((previous) => !previous);
-    setMobileSidebarOpen(false);
-  };
+  const isPublicPage =
+    location.pathname === "/" ||
+    location.pathname === "/home" ||
+    location.pathname === "/auth";
 
   return (
-    <div className="app-shell">
-      <div className={`sidebar-slot ${sidebarCollapsed ? "sidebar-slot-closed" : ""}`}>
-        <Sidebar
-          collapsed={sidebarCollapsed}
-          onToggle={toggleSidebar}
-          mobileOpen={mobileSidebarOpen}
-          onClose={() => setMobileSidebarOpen(false)}
-        />
-      </div>
+    <div className={isPublicPage ? "smartbin-public-app" : "app-shell"}>
+      {!isPublicPage && <Sidebar />}
 
-      <div className="app-main">
-        <Header
-          onMenuClick={toggleSidebar}
-          user={{ name: "SmartBin Admin", role: "Administrator" }}
-        />
+      <main
+        className={
+          isPublicPage ? "smartbin-public-main" : "app-main"
+        }
+      >
+        <Routes>
+          <Route path="/" element={<LandingPageNew />} />
+          <Route path="/home" element={<LandingPageNew />} />
+          <Route path="/auth" element={<Auth />} />
 
-        <main className="app-content">
-          <Routes>
-      <Route path="/" element={<Dashboard />} />
-      <Route path="/home" element={<LandingPage />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/simulator" element={<CitySimulator />} />
-            <Route path="/classifier" element={<AIClassifier />} />
-            <Route path="/routes" element={<RouteOptimizer />} />
-            <Route path="/predictions" element={<OverflowPrediction />} />
-            <Route path="/reports" element={<CitizenReports />} />
-            <Route path="/reports-history" element={<ReportsHistory />} />
-            <Route path="/bins/:id" element={<BinDetails />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </main>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/simulator" element={<CitySimulator />} />
+          <Route path="/classifier" element={<AIClassifier />} />
+          <Route path="/routes" element={<RouteOptimizer />} />
+          <Route path="/predictions" element={<OverflowPrediction />} />
+          <Route path="/reports" element={<CitizenReports />} />
+          <Route path="/reports-history" element={<ReportsHistory />} />
+          <Route path="/bins/:id" element={<BinDetails />} />
 
-        {!isBinDetails && (
-          <footer className="app-footer">
-            <span>SmartBin AI</span>
-            <span>Smart Waste Management Dashboard</span>
-          </footer>
-        )}
-      </div>
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </main>
     </div>
   );
 }
+
+export default function App() { return <AppContent />; }
 
 
 
