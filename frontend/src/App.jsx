@@ -19,6 +19,7 @@ import OverflowPrediction from "./pages/OverflowPrediction";
 import CitizenReports from "./pages/CitizenReports";
 import ReportsHistory from "./pages/ReportsHistory";
 import BinDetails from "./pages/BinDetails";
+import SmartDisposal from "./pages/SmartDisposal";
 import "./styles/app.css";
 
 function AppContent() {
@@ -51,6 +52,7 @@ function AppContent() {
           <Route path="/reports" element={<CitizenReports />} />
           <Route path="/reports-history" element={<ReportsHistory />} />
           <Route path="/bins/:id" element={<BinDetails />} />
+          <Route path="/smart-disposal" element={<SmartDisposal />} />
 
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
@@ -60,6 +62,7 @@ function AppContent() {
 }
 
 export default function App() { return <AppContent />; }
+
 
 
 

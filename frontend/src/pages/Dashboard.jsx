@@ -137,7 +137,56 @@ export default function Dashboard() {
           })}
         </section>
 
-        <section className="sb-main-grid">
+        <section
+          className="sb-panel smart-disposal-card"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: "20px",
+            flexWrap: "wrap",
+            marginTop: "24px",
+            padding: "24px",
+            background: "#f0faf3",
+            border: "1px solid #ccebd6"
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+            <div
+              style={{
+                display: "grid",
+                placeItems: "center",
+                width: "54px",
+                height: "54px",
+                flexShrink: 0,
+                borderRadius: "14px",
+                background: "#d9f3e2",
+                color: "#16865b"
+              }}
+            >
+              <Recycle size={28} />
+            </div>
+
+            <div>
+              <h3 style={{ margin: "0 0 8px", color: "#203752", fontSize: "18px" }}>
+                Smart Disposal &amp; Cleaning
+              </h3>
+              <p style={{ margin: 0, color: "#718096", fontSize: "13px", lineHeight: 1.7 }}>
+                Find collection vehicles, report roadside waste, and track your civic complaints.
+              </p>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            className="dashboard-btn dashboard-btn-primary"
+            onClick={() => navigate("/smart-disposal")}
+          >
+            Open Smart Disposal <ArrowRight size={16} />
+          </button>
+        </section>
+
+          <section className="sb-main-grid">
           <article className="sb-panel sb-map-panel">
             <div className="sb-panel-heading">
               <div><h3>Bin Locations</h3><p>Real-time status of all bins in the city</p></div>
@@ -198,57 +247,11 @@ export default function Dashboard() {
           </article>
         </section>
 
-        <section
-          className="sb-panel smart-disposal-card"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: "20px",
-            flexWrap: "wrap",
-            marginTop: "24px",
-            padding: "24px",
-            background: "#f0faf3",
-            border: "1px solid #ccebd6"
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-            <div
-              style={{
-                display: "grid",
-                placeItems: "center",
-                width: "54px",
-                height: "54px",
-                flexShrink: 0,
-                borderRadius: "14px",
-                background: "#d9f3e2",
-                color: "#16865b"
-              }}
-            >
-              <Recycle size={28} />
-            </div>
-
-            <div>
-              <h3 style={{ margin: "0 0 8px", color: "#203752", fontSize: "18px" }}>
-                Smart Disposal &amp; Cleaning
-              </h3>
-              <p style={{ margin: 0, color: "#718096", fontSize: "13px", lineHeight: 1.7 }}>
-                Find collection vehicles, report roadside waste, and track your civic complaints.
-              </p>
-            </div>
-          </div>
-
-          <button
-            type="button"
-            className="dashboard-btn dashboard-btn-primary"
-            onClick={() => navigate("/smart-disposal")}
-          >
-            Open Smart Disposal <ArrowRight size={16} />
-          </button>
-        </section>
+        
         <footer className="sb-footer"><span><Recycle size={15}/> SmartBin AI</span><span>Smart Waste Management Dashboard</span></footer>
       </main>
     </div>
   );
 }
+
 
