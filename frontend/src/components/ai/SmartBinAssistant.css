@@ -1,0 +1,246 @@
+﻿.sb-ai-panel {
+  position: fixed;
+  z-index: 1000;
+  top: 80px;
+  right: 20px;
+  bottom: 18px;
+  width: min(450px, calc(100vw - 32px));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #173047;
+  background: #fff;
+  border: 1px solid #dce9e5;
+  border-radius: 18px;
+  box-shadow: 0 12px 40px rgba(10, 50, 45, .18);
+  font-family: inherit;
+}
+
+.sb-ai-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 82px;
+  padding: 14px;
+  color: #fff;
+  background: linear-gradient(115deg, #087858, #034c3b);
+}
+
+.sb-ai-logo {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.16);
+}
+
+.sb-ai-title { flex: 1; min-width: 0; }
+
+.sb-ai-title h2 {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0 0 5px;
+  font-size: 15px;
+}
+
+.sb-ai-title p {
+  margin: 0;
+  color: #d8f4e9;
+  font-size: 12px;
+}
+
+.sb-ai-header-btn {
+  padding: 4px;
+  border: 0;
+  color: white;
+  background: transparent;
+  cursor: pointer;
+}
+
+.sb-ai-chat {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 18px 13px;
+  background: #fbfdfc;
+}
+
+.sb-ai-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin-bottom: 17px;
+}
+
+.sb-ai-user-row { justify-content: flex-end; }
+
+.sb-ai-avatar, .sb-ai-user-avatar {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.sb-ai-avatar {
+  color: #087858;
+  background: #dff7e9;
+}
+
+.sb-ai-user-avatar {
+  color: #1763ac;
+  background: #dcecff;
+  font-weight: 700;
+}
+
+.sb-ai-message-wrap { max-width: 82%; min-width: 0; }
+
+.sb-ai-bubble {
+  padding: 12px 14px;
+  border-radius: 14px 14px 14px 4px;
+  background: #edf3f8;
+  color: #173047;
+  font-size: 13px;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.sb-ai-user-bubble {
+  border-radius: 14px 14px 4px 14px;
+  background: #dff7e9;
+}
+
+.sb-ai-time {
+  display: block;
+  margin: 5px;
+  color: #8192a5;
+  font-size: 10px;
+  text-align: right;
+}
+
+.sb-ai-thinking {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sb-ai-spinner { animation: sb-ai-spin 1s linear infinite; }
+
+@keyframes sb-ai-spin {
+  to { transform: rotate(360deg); }
+}
+
+.sb-ai-suggestions {
+  padding: 12px 13px;
+  border-top: 1px solid #e8efec;
+  background: #fff;
+}
+
+.sb-ai-suggestions > p {
+  margin: 0 0 9px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.sb-ai-suggestion-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.sb-ai-suggestion {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 10px;
+  border: 1px solid #d6e7e0;
+  border-radius: 11px;
+  background: #fbfefd;
+  color: #173b32;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.sb-ai-suggestion svg { color: #087858; flex-shrink: 0; }
+.sb-ai-suggestion:hover { background: #e8f8ef; }
+.sb-ai-suggestion:disabled { opacity: .6; cursor: not-allowed; }
+
+.sb-ai-input-area {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px;
+  border-top: 1px solid #e8efec;
+  background: white;
+}
+
+.sb-ai-input-area input {
+  flex: 1;
+  min-width: 0;
+  padding: 13px;
+  border: 1px solid #dce7e6;
+  border-radius: 11px;
+  outline: none;
+  font: inherit;
+  font-size: 12px;
+}
+
+.sb-ai-input-area input:focus { border-color: #087858; }
+
+.sb-ai-input-area button {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 45px;
+  height: 45px;
+  border: 0;
+  border-radius: 11px;
+  color: white;
+  background: #087858;
+  cursor: pointer;
+}
+
+.sb-ai-input-area button:disabled { opacity: .5; cursor: not-allowed; }
+
+.sb-ai-disclaimer {
+  margin: 0;
+  padding: 0 10px 9px;
+  color: #80918b;
+  background: white;
+  font-size: 10px;
+  text-align: center;
+}
+
+.sb-ai-launcher {
+  position: fixed;
+  z-index: 1000;
+  right: 24px;
+  bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 14px 19px;
+  border: 0;
+  border-radius: 14px;
+  color: white;
+  background: #087858;
+  box-shadow: 0 8px 24px rgba(0,70,50,.25);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .sb-ai-panel {
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    width: calc(100vw - 20px);
+  }
+  .sb-ai-title h2 { font-size: 13px; }
+  .sb-ai-suggestion { font-size: 10px; }
+}

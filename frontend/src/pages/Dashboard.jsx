@@ -1,4 +1,6 @@
-﻿import React, { useEffect, useMemo, useState } from "react";
+﻿
+import SmartBinAssistant from "../components/ai/SmartBinAssistant";
+import React, { useEffect, useMemo, useState } from "react";
 import {
   Trash2, ShieldCheck, AlertTriangle, Siren, CalendarDays,
   Bell, ChevronDown, RefreshCw, MapPin, Layers, Plus, Minus,
