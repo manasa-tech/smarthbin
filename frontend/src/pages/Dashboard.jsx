@@ -251,9 +251,11 @@ export default function Dashboard() {
 
         
         <footer className="sb-footer"><span><Recycle size={15}/> SmartBin AI</span><span>Smart Waste Management Dashboard</span></footer>
+        <SmartBinAssistant />
       </main>
     </div>
   );
 }
+
 
 
