@@ -1,6 +1,6 @@
 ﻿import AuthPage from "./pages/AuthPage";
 import LandingPageNew from "./pages/LandingPageNew";
-
+import Profile from "./pages/Profile";
 import React from "react";
 import {
   Routes,
@@ -55,13 +55,15 @@ function AppContent() {
           <Route path="/smart-disposal" element={<SmartDisposal />} />
 
           <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+          <Route path="/profile" element={<Profile />} />
+</Routes>
       </main>
     </div>
   );
 }
 
 export default function App() { return <AppContent />; }
+
 
 
 
