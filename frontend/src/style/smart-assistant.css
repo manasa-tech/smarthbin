@@ -1,0 +1,105 @@
+﻿.smart-assistant-page {
+  padding: 24px;
+  background: #f5f8f6;
+  color: #19352a;
+  border-radius: 16px;
+}
+
+.smart-assistant-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.smart-assistant-header h1 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.smart-assistant-header p {
+  color: #718078;
+}
+
+.smart-assistant-chat {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  background: white;
+  border: 1px solid #e0e9e3;
+  border-radius: 16px;
+}
+
+.smart-assistant-messages {
+  min-height: 300px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.smart-assistant-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.smart-assistant-bubble {
+  padding: 12px 16px;
+  background: #eef7f0;
+  border-radius: 12px;
+  overflow-wrap: anywhere;
+}
+
+.smart-assistant-bubble p {
+  margin: 5px 0;
+  line-height: 1.6;
+}
+
+.smart-assistant-input-area {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.smart-assistant-input-area input {
+  flex: 1;
+  min-width: 0;
+  padding: 13px;
+  border: 1px solid #d7e3da;
+  border-radius: 10px;
+}
+
+.smart-assistant-input-area button {
+  padding: 12px 18px;
+  color: white;
+  background: #16845b;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.smart-assistant-input-area button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.smart-assistant-error {
+  padding: 12px;
+  color: #a12b2b;
+  background: #fff0f0;
+  border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+  .smart-assistant-page {
+    padding: 12px;
+  }
+
+  .smart-assistant-header h1 {
+    font-size: 21px;
+  }
+
+  .smart-assistant-chat {
+    padding: 12px;
+  }
+}

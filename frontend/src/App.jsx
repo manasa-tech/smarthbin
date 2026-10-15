@@ -1,16 +1,7 @@
-﻿import AuthPage from "./pages/AuthPage";
-import LandingPageNew from "./pages/LandingPageNew";
-import Profile from "./pages/Profile";
-import React from "react";
-import {
-  Routes,
-  Route,
-  Navigate,
-  useLocation,
-} from "react-router-dom";
-
+﻿import { useState } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Sidebar from "./components/layout/Sidebar";
-import Auth from "./pages/Auth";
+import Header from "./components/layout/Header";
 import Dashboard from "./pages/Dashboard";
 import CitySimulator from "./pages/CitySimulator";
 import AIClassifier from "./pages/AIClassifier";
@@ -18,55 +9,35 @@ import RouteOptimizer from "./pages/RouteOptimizer";
 import OverflowPrediction from "./pages/OverflowPrediction";
 import CitizenReports from "./pages/CitizenReports";
 import ReportsHistory from "./pages/ReportsHistory";
-import BinDetails from "./pages/BinDetails";
-import SmartDisposal from "./pages/SmartDisposal";
-import "./styles/app.css";
+import "./App.css";
 
-function AppContent() {
-  const location = useLocation();
-
-  const isPublicPage =
-    location.pathname === "/" ||
-    location.pathname === "/home" ||
-    location.pathname === "/auth";
+export default function App() {
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <div className={isPublicPage ? "smartbin-public-app" : "app-shell"}>
-      {!isPublicPage && <Sidebar />}
+    <div className="app-shell">
+      <Sidebar
+        mobileOpen={mobileOpen}
+        onClose={() => setMobileOpen(false)}
+      />
 
-      <main
-        className={
-          isPublicPage ? "smartbin-public-main" : "app-main"
-        }
-      >
-        <Routes>
-          <Route path="/" element={<LandingPageNew />} />
-          <Route path="/home" element={<LandingPageNew />} />
-          <Route path="/auth" element={<Auth />} />
+      <div className="app-main">
+        <Header onMenuClick={() => setMobileOpen(true)} />
 
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/simulator" element={<CitySimulator />} />
-          <Route path="/classifier" element={<AIClassifier />} />
-          <Route path="/routes" element={<RouteOptimizer />} />
-          <Route path="/predictions" element={<OverflowPrediction />} />
-          <Route path="/reports" element={<CitizenReports />} />
-          <Route path="/reports-history" element={<ReportsHistory />} />
-          <Route path="/bins/:id" element={<BinDetails />} />
-          <Route path="/smart-disposal" element={<SmartDisposal />} />
-
-          <Route path="*" element={<Navigate to="/" replace />} />
-          <Route path="/profile" element={<Profile />} />
-</Routes>
-      </main>
+        <main className="page-content">
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/simulator" element={<CitySimulator />} />
+            <Route path="/classifier" element={<AIClassifier />} />
+            <Route path="/routes" element={<RouteOptimizer />} />
+            <Route path="/prediction" element={<OverflowPrediction />} />
+            <Route path="/reports" element={<CitizenReports />} />
+            <Route path="/history" element={<ReportsHistory />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </main>
+      </div>
     </div>
   );
 }
-
-export default function App() { return <AppContent />; }
-
-
-
-
-
-
-
