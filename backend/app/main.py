@@ -1,5 +1,7 @@
-from app.database.database import engine, Base
+﻿from app.database.database import engine, Base
 from app.models.bin_model import Bin
+
+from app.assistant import router as assistant_router
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -11,6 +13,8 @@ app = FastAPI(
     description="AI-powered smart waste management backend",
     version="1.0.0"
 )
+
+app.include_router(assistant_router)
 
 app.add_middleware(
     CORSMiddleware,

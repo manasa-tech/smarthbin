@@ -79,3 +79,5 @@ async def assistant_chat(request: ChatRequest):
             detail="Ollama took too long to respond."
         )
 
+
+
