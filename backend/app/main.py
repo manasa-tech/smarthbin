@@ -1,6 +1,6 @@
 ﻿from app.database.database import engine, Base
 from app.models.bin_model import Bin
-
+from app.assistant_health import router as assistant_health_router
 from app.assistant import router as assistant_router
 
 from fastapi import FastAPI, HTTPException
@@ -318,3 +318,4 @@ def get_priority_bins():
     )
 
     return priority_bins
+
