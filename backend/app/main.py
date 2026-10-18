@@ -1,4 +1,6 @@
-﻿from app.database.database import engine, Base
+﻿from app.export_routes import router as export_router
+from app.bin_analytics import router as analytics_router
+from app.database.database import engine, Base
 from app.models.bin_model import Bin
 from app.assistant_health import router as assistant_health_router
 from app.assistant import router as assistant_router
@@ -318,4 +320,7 @@ def get_priority_bins():
     )
 
     return priority_bins
+
+
+
 
