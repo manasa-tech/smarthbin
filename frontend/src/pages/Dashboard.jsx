@@ -112,11 +112,6 @@ export default function Dashboard() {
             <p>Here's the real-time overview of your city's waste management.</p>
           </div>
         </div>
-        <div className="sb-header-actions">
-          <div className="sb-date-chip"><CalendarDays size={19}/><div><strong>{date}</strong><small>{new Date().toLocaleDateString("en-IN",{weekday:"long"})}</small></div></div>
-          <button className="sb-icon-button" aria-label="Notifications"><Bell size={21}/><i/></button>
-          <div className="sb-admin"><span className="sb-avatar">V</span><div><strong>SmartBin Admin</strong><small>Administrator</small></div><ChevronDown size={16}/></div>
-        </div>
       </header>
 
       <main className="sb-dashboard-content">
@@ -256,6 +251,7 @@ export default function Dashboard() {
     </div>
   );
 }
+
 
 
 

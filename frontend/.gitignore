@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -26,3 +27,11 @@ dist-ssr
 # Local backup files and folders
 *.backup-*
 *-backup-*/
+=======
+node_modules
+**/__pycache__/
+*.py[cod]
+.venv/
+.venv-*/
+.env
+>>>>>>> origin/main

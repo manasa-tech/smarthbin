@@ -324,3 +324,8 @@ def get_priority_bins():
 
 
 
+
+app.include_router(analytics_router)
+
+app.include_router(export_router)
+
