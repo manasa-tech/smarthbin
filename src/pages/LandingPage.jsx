@@ -1,450 +1,110 @@
-﻿
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 import {
-  ArrowRight,
-  Leaf,
-  Recycle,
-  Trash2,
-  MapPin,
-  BarChart3,
-  Users,
-  Wifi,
-  Activity,
-  Wind,
-  Building2,
-  Globe2,
+  Leaf, ArrowRight, Recycle, MapPinned, BrainCircuit,
+  BarChart3, CheckCircle2, Sprout, Menu
 } from "lucide-react";
-
 import "../styles/landing.css";
-
-const features = [
-  {
-    icon: Trash2,
-    title: "Real-Time Monitoring",
-    description:
-      "Track bin fill levels and get alerts when collection is needed.",
-    link: "Explore monitoring",
-  },
-  {
-    icon: Leaf,
-    title: "AI Waste Classification",
-    description:
-      "Identify waste types and discover the right disposal method.",
-    link: "Explore classification",
-  },
-  {
-    icon: MapPin,
-    title: "Optimized Collection Routes",
-    description:
-      "Plan efficient routes to reduce fuel usage and collection time.",
-    link: "Explore routes",
-  },
-  {
-    icon: BarChart3,
-    title: "Insights & Reports",
-    description:
-      "Understand waste patterns through clear data visualizations.",
-    link: "Explore reports",
-  },
-];
-
-function SmartBinIllustration() {
-  return (
-    <div className="scene">
-      <div className="scene-sun" />
-      <div className="scene-cloud cloud-one" />
-      <div className="scene-cloud cloud-two" />
-
-      <div className="scene-city">
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
-      </div>
-
-      <div className="scene-trees tree-a">
-        <i />
-        <b />
-      </div>
-
-      <div className="scene-trees tree-b">
-        <i />
-        <b />
-      </div>
-
-      <div className="scene-hill hill-back" />
-      <div className="scene-hill hill-front" />
-      <div className="scene-path" />
-
-      <div className="smart-bin-illustration">
-        <div className="smart-bin-lid">
-          <span />
-        </div>
-
-        <div className="smart-bin-panel">
-          <span className="bin-connect">
-            <Wifi size={28} />
-          </span>
-
-          <strong>
-            SmartBin <small>AI</small>
-          </strong>
-
-          <Recycle size={58} strokeWidth={1.8} />
-
-          <span className="bin-indicator">
-            <i /> SMART SYSTEM
-          </span>
-        </div>
-
-        <div className="bin-wheel wheel-a" />
-        <div className="bin-wheel wheel-b" />
-      </div>
-
-      <div className="monitor-card fill-monitor">
-        <div className="monitor-heading">
-          <span className="mini-icon">
-            <Trash2 size={17} />
-          </span>
-          <span>Fill Level</span>
-          <Activity size={17} className="monitor-green" />
-        </div>
-
-        <div className="monitor-ring">
-          <span>
-            65<small>%</small>
-          </span>
-        </div>
-
-        <div className="monitor-status">
-          <i /> Monitoring preview
-        </div>
-      </div>
-
-      <div className="monitor-card location-monitor">
-        <span className="mini-icon">
-          <MapPin size={19} />
-        </span>
-
-        <div>
-          <small>Location</small>
-          <strong>City Park</strong>
-
-          <span className="map-preview">
-            <i />
-            <b />
-            <em />
-          </span>
-        </div>
-      </div>
-
-      <div className="monitor-card air-monitor">
-        <span className="mini-icon">
-          <Leaf size={19} />
-        </span>
-
-        <div>
-          <small>Environment</small>
-          <strong>Greener choices</strong>
-          <span className="monitor-caption">
-            A cleaner tomorrow
-          </span>
-        </div>
-      </div>
-
-      <div className="monitor-card weather-monitor">
-        <Wind size={19} className="monitor-green" />
-
-        <div>
-          <small>Smart city</small>
-          <strong>Connected</strong>
-          <span className="monitor-caption">
-            Illustrative status
-          </span>
-        </div>
-      </div>
-
-      <span className="scene-leaf leaf-one" />
-      <span className="scene-leaf leaf-two" />
-    </div>
-  );
-}
 
 export default function LandingPage() {
   return (
-    <div className="sb-landing">
-      {/* Navigation */}
-      <header className="sb-header">
-        <Link to="/" className="sb-brand">
-          <span className="sb-brand-icon">
-            <Leaf size={25} />
-          </span>
-          <span>
-            SmartBin <b>AI</b>
-          </span>
+    <div className="landing-page">
+      <header className="landing-header">
+        <Link to="/" className="landing-logo">
+          <span className="landing-logo-icon"><Leaf size={25} /></span>
+          <span>SmartBin<span className="landing-logo-ai"> AI</span><small>SMART WASTE MANAGEMENT</small></span>
         </Link>
 
-        <nav className="sb-nav" aria-label="Main navigation">
-          <a className="active" href="#home">Home</a>
+        <nav className="landing-nav">
+          <a href="#home" className="landing-nav-active">Home</a>
           <a href="#features">Features</a>
-          <a href="#how-it-works">How It Works</a>
-          <a href="#impact">Impact</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#impact">Our impact</a>
           <a href="#about">About</a>
         </nav>
 
-        <div className="sb-header-actions">
-          <Link to="/login" className="sb-login">
-            Log in
-          </Link>
-
-          <Link to="/signup" className="sb-get-started">
-            Get Started <ArrowRight size={16} />
-          </Link>
+        <div className="landing-actions">
+          <Link to="/login" className="landing-login">Log in</Link>
+          <Link to="/signup" className="landing-signup">Get started <ArrowRight size={17} /></Link>
         </div>
       </header>
 
       <main>
-        {/* Hero */}
-        <section className="sb-hero" id="home">
-          <div className="sb-hero-copy">
-            <div className="sb-eyebrow">
-              <Leaf size={14} />
-              CLEANER CITIES. BRIGHTER TOMORROWS.
-            </div>
-
-            <h1>
-              Smarter
-              <span>Waste Management</span>
-              for a Greener Tomorrow.
-              <Leaf className="sb-title-leaf" size={31} />
-            </h1>
-
-            <p className="sb-hero-description">
-              SmartBin AI brings real-time data and artificial
-              intelligence together to make waste management
-              smarter, cleaner and more sustainable for every
-              community.
+        <section className="landing-hero" id="home">
+          <div className="landing-hero-copy">
+            <div className="landing-eyebrow"><Leaf size={15} /> CLEANER CITIES. BRIGHTER TOMORROWS.</div>
+            <h1>Waste less.<br /><span>Live greener.</span><br />Think smarter.</h1>
+            <p className="landing-description">
+              Meet a smarter way to manage waste. SmartBin AI helps communities
+              monitor bins, plan collections and make better environmental decisions.
             </p>
-
-            <div className="sb-hero-actions">
-              <Link to="/signup" className="sb-primary-button">
-                Get Started <ArrowRight size={19} />
-              </Link>
-
-              <a href="#how-it-works" className="sb-secondary-button">
-                <span className="sb-play">▶</span>
-                Explore Features
-              </a>
+            <div className="landing-hero-actions">
+              <Link to="/signup" className="landing-primary-button">Get started for free <ArrowRight size={18} /></Link>
+              <a href="#how-it-works" className="landing-secondary-button">Discover how it works <span>↗</span></a>
             </div>
-
-            <div className="sb-hero-metrics">
-              <div className="sb-metric">
-                <span className="sb-metric-icon">
-                  <Recycle size={25} />
-                </span>
-                <div>
-                  <strong>Smarter</strong>
-                  <small>Waste decisions</small>
-                </div>
-              </div>
-
-              <div className="sb-metric">
-                <span className="sb-metric-icon">
-                  <Leaf size={25} />
-                </span>
-                <div>
-                  <strong>Greener</strong>
-                  <small>Communities</small>
-                </div>
-              </div>
-
-              <div className="sb-metric">
-                <span className="sb-metric-icon">
-                  <Users size={25} />
-                </span>
-                <div>
-                  <strong>Connected</strong>
-                  <small>City solutions</small>
-                </div>
-              </div>
+            <div className="landing-trust-row">
+              <span><CheckCircle2 size={16} /> Smarter collection</span>
+              <span><CheckCircle2 size={16} /> Cleaner communities</span>
             </div>
           </div>
 
-          <SmartBinIllustration />
+          <div className="landing-visual" aria-label="Illustration of a cleaner smart city">
+            <div className="landing-visual-top"><span><i /> SMART CITY, BETTER TOMORROW</span><Leaf size={19} /></div>
+            <div className="landing-sun" />
+            <div className="landing-cloud cloud-one" />
+            <div className="landing-cloud cloud-two" />
+            <div className="landing-city">
+              <div className="landing-building building-a"><i /><i /><i /><i /><i /><i /></div>
+              <div className="landing-building building-b"><i /><i /><i /><i /><i /><i /><i /><i /></div>
+              <div className="landing-building building-c"><i /><i /><i /><i /></div>
+              <div className="landing-building building-d"><i /><i /><i /><i /><i /><i /></div>
+            </div>
+            <div className="landing-green-hill hill-back" />
+            <div className="landing-green-hill hill-front" />
+            <div className="landing-tree tree-one"><span /></div>
+            <div className="landing-tree tree-two"><span /></div>
+            <div className="landing-smart-bin"><div className="landing-bin-lid" /><Recycle size={43} /><b>SMART<br />BIN AI</b><small>WASTE • SORT • REPEAT</small></div>
+            <div className="landing-floating-card card-status"><span><CheckCircle2 size={17} /></span><div><b>Smarter collections</b><small>Less waste on the streets</small></div></div>
+            <div className="landing-floating-card card-leaf"><Sprout size={21} /><span><b>Think green</b><small>Make every action count</small></span></div>
+            <div className="landing-visual-caption">A cleaner future starts with one smart choice.</div>
+          </div>
+
+          <div className="landing-scroll-cue"><span /> SCROLL TO EXPLORE</div>
         </section>
 
-        {/* Features */}
-        <section className="sb-features" id="features">
-          <div className="sb-section-heading">
-            <div>
-              <span className="sb-section-label">
-                WHY SMARTBIN AI?
-              </span>
+        <section className="landing-intro" id="about">
+          <div><span className="landing-section-label">A SMARTER APPROACH</span><h2>Waste management,<br /><span>reimagined.</span></h2></div>
+          <p>From overflowing bins to inefficient collection routes, waste creates challenges for every community. SmartBin AI brings useful data and intelligent tools together to help make waste management more organised, efficient and sustainable.</p>
+        </section>
 
-              <h2>
-                Simple Solutions for
-                <br />
-                <span>Cleaner Communities.</span>
-              </h2>
-            </div>
-
-            <div className="sb-section-intro">
-              <p>
-                From real-time monitoring to AI-powered waste
-                classification, manage your waste workflow in
-                one smart workspace.
-              </p>
-
-              <a href="#how-it-works" className="sb-outline-link">
-                Explore all features <ArrowRight size={16} />
-              </a>
-            </div>
-          </div>
-
-          <div className="sb-feature-grid">
-            {features.map(({ icon: Icon, title, description, link }) => (
-              <article className="sb-feature-card" key={title}>
-                <div className="sb-feature-top">
-                  <span className="sb-feature-icon">
-                    <Icon size={25} />
-                  </span>
-
-                  <div>
-                    <h3>{title}</h3>
-                    <p>{description}</p>
-                  </div>
-                </div>
-
-                <div
-                  className={`sb-feature-art ${
-                    title === "Real-Time Monitoring"
-                      ? "monitor-art"
-                      : title === "AI Waste Classification"
-                        ? "waste-art"
-                        : title === "Optimized Collection Routes"
-                          ? "route-art"
-                          : "report-art"
-                  }`}
-                  aria-hidden="true"
-                >
-                  {title === "Real-Time Monitoring" && (
-                    <>
-                      <span className="art-bin">
-                        <Recycle size={27} />
-                      </span>
-                      <span className="art-bars">
-                        <i /><i /><i /><i />
-                      </span>
-                    </>
-                  )}
-
-                  {title === "AI Waste Classification" && (
-                    <>
-                      <span className="waste-item waste-bottle">♧</span>
-                      <span className="waste-item waste-box">□</span>
-                      <span className="art-scan">AI SCAN</span>
-                    </>
-                  )}
-
-                  {title === "Optimized Collection Routes" && (
-                    <>
-                      <span className="route-line" />
-                      <MapPin className="route-pin pin-one" size={25} />
-                      <MapPin className="route-pin pin-two" size={25} />
-                      <span className="route-van">↗</span>
-                    </>
-                  )}
-
-                  {title === "Insights & Reports" && (
-                    <>
-                      <span className="report-paper">
-                        ≡<br />≡<br />≡
-                      </span>
-                      <span className="report-bars">
-                        <i /><i /><i /><i />
-                      </span>
-                    </>
-                  )}
-                </div>
-
-                <a href="#how-it-works" className="sb-feature-link">
-                  {link} <ArrowRight size={15} />
-                </a>
-              </article>
-            ))}
+        <section className="landing-features" id="features">
+          <div className="landing-section-heading"><span className="landing-section-label">MADE FOR A GREENER WORLD</span><h2>Small changes. <span>Real impact.</span></h2><p>Tools to help you understand waste and manage it smarter.</p></div>
+          <div className="landing-feature-grid">
+            <article className="landing-feature-card"><span className="feature-icon mint"><MapPinned size={24} /></span><h3>Know where waste is</h3><p>Visualise bin locations and identify areas that may need attention.</p><a href="#how-it-works">Explore mapping ↗</a></article>
+            <article className="landing-feature-card"><span className="feature-icon yellow"><BrainCircuit size={24} /></span><h3>Make smarter decisions</h3><p>Use intelligent insights to help prioritise collections and reduce overflow.</p><a href="#how-it-works">Explore AI insights ↗</a></article>
+            <article className="landing-feature-card"><span className="feature-icon blue"><BarChart3 size={24} /></span><h3>Understand your impact</h3><p>Track waste patterns and learn where better habits can make a difference.</p><a href="#impact">Explore analytics ↗</a></article>
           </div>
         </section>
 
-        {/* Impact strip */}
-        <section className="sb-impact" id="impact">
-          <div className="sb-impact-item">
-            <Leaf size={29} />
-            <div>
-              <strong>Smart bins</strong>
-              <span>Connected monitoring</span>
-            </div>
-          </div>
-
-          <div className="sb-impact-item">
-            <Users size={29} />
-            <div>
-              <strong>Communities</strong>
-              <span>Built for people</span>
-            </div>
-          </div>
-
-          <div className="sb-impact-item">
-            <Building2 size={29} />
-            <div>
-              <strong>Smart cities</strong>
-              <span>Better planning</span>
-            </div>
-          </div>
-
-          <div className="sb-impact-item">
-            <Globe2 size={29} />
-            <div>
-              <strong>Greener future</strong>
-              <span>One step at a time</span>
-            </div>
+        <section className="landing-how" id="how-it-works">
+          <div className="landing-section-heading"><span className="landing-section-label">SIMPLE BY DESIGN</span><h2>Better waste management<br /><span>in three steps.</span></h2></div>
+          <div className="landing-steps">
+            <article><span>01</span><h3>Connect</h3><p>Bring your waste-management information into one organised workspace.</p></article>
+            <article><span>02</span><h3>Understand</h3><p>Review bin status, waste trends and collection priorities.</p></article>
+            <article><span>03</span><h3>Improve</h3><p>Use what you learn to plan smarter and work towards cleaner surroundings.</p></article>
           </div>
         </section>
 
-        {/* Call to action */}
-        <section className="sb-how" id="how-it-works">
-          <span className="sb-section-label">
-            A GREENER WAY FORWARD
-          </span>
-
-          <h2>Make every bin count.</h2>
-
-          <p>
-            Monitor bins, identify waste and make better collection
-            decisions with one connected platform.
-          </p>
-
-          <Link to="/signup" className="sb-primary-button">
-            Get Started <ArrowRight size={18} />
-          </Link>
+        <section className="landing-impact" id="impact">
+          <div><span className="landing-section-label">OUR SHARED GOAL</span><h2>A cleaner planet<br />is a <span>team effort.</span></h2><p>Every correctly sorted item, every timely collection and every thoughtful decision can contribute to a more sustainable community.</p><Link to="/signup" className="landing-primary-button">Be part of the change <ArrowRight size={18} /></Link></div>
+          <div className="landing-impact-art"><div className="impact-circle"><Leaf size={80} /><span>THINK<br />GREEN</span></div><Sprout className="impact-sprout" size={100} /></div>
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="sb-footer" id="about">
-        <Link to="/" className="sb-brand">
-          <span className="sb-brand-icon">
-            <Leaf size={22} />
-          </span>
-          <span>
-            SmartBin <b>AI</b>
-          </span>
-        </Link>
-
-        <p>Smarter waste management, one step at a time.</p>
-
-        <span>© {new Date().getFullYear()} SmartBin AI</span>
+      <footer className="landing-footer">
+        <Link to="/" className="landing-logo"><span className="landing-logo-icon"><Leaf size={22} /></span><span>SmartBin<span className="landing-logo-ai"> AI</span><small>SMART WASTE MANAGEMENT</small></span></Link>
+        <p>Building cleaner communities, one smart choice at a time.</p>
+        <div><Link to="/login">Log in</Link><Link to="/signup">Create account</Link></div>
+        <small>© {new Date().getFullYear()} SmartBin AI</small>
       </footer>
     </div>
   );

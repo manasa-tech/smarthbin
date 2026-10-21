@@ -1,373 +1,162 @@
 ﻿import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import {
-  ArrowRight, Leaf, Recycle, UserRound, Mail, LockKeyhole,
-  Eye, EyeOff, BarChart3, Users, Trash2, Wifi
-} from "lucide-react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Leaf, Mail, LockKeyhole, UserRound, Phone, ArrowRight } from "lucide-react";
+import { getProfile, saveProfile } from "../utils/profileStore";
 import "../styles/auth.css";
 
 export default function AuthPage() {
+  const navigate = useNavigate();
   const location = useLocation();
-  const isLoginRoute = location.pathname === "/login";
-
-  const [mode, setMode] = useState(isLoginRoute ? "signin" : "signup");
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirm, setShowConfirm] = useState(false);
-  const [message, setMessage] = useState("");
+  const isSignup = location.pathname === "/signup";
 
   const [form, setForm] = useState({
     name: "",
     email: "",
+    phone: "",
     password: "",
     confirmPassword: "",
-    accepted: false,
   });
+  const [error, setError] = useState("");
 
-  const isSignup = mode === "signup";
-
-  function updateField(event) {
-    const { name, value, checked, type } = event.target;
+  function handleChange(event) {
     setForm((previous) => ({
       ...previous,
-      [name]: type === "checkbox" ? checked : value,
+      [event.target.name]: event.target.value,
     }));
-    setMessage("");
   }
 
   function handleSubmit(event) {
     event.preventDefault();
+    setError("");
 
-    if (isSignup && form.password !== form.confirmPassword) {
-      setMessage("Passwords do not match.");
+    const email = form.email.trim().toLowerCase();
+
+    if (isSignup) {
+      if (!form.name.trim() || !email || !form.password) {
+        setError("Please complete all required fields.");
+        return;
+      }
+
+      if (form.password.length < 8) {
+        setError("Password must contain at least 8 characters.");
+        return;
+      }
+
+      if (form.password !== form.confirmPassword) {
+        setError("Passwords do not match.");
+        return;
+      }
+
+      // Save profile information only; this is not secure authentication.
+      saveProfile({
+        name: form.name.trim(),
+        email,
+        phone: form.phone.trim(),
+        role: "SmartBin AI member",
+      });
+
+      // Keep the password out of browser profile storage.
+      navigate("/dashboard");
       return;
     }
 
-    if (form.password.length < 8) {
-      setMessage("Password must contain at least 8 characters.");
+    const profile = getProfile();
+
+    if (!profile || profile.email?.toLowerCase() !== email) {
+      setError("No matching local profile found. Please sign up first.");
       return;
     }
 
-    if (isSignup && !form.accepted) {
-      setMessage("Please accept the Terms and Privacy Policy.");
-      return;
-    }
-
-    setMessage(
-      isSignup
-        ? "Form validated. Backend registration still needs to be connected."
-        : "Form validated. Backend login still needs to be connected."
-    );
+    // Prototype-only login check; real password verification needs a backend.
+    navigate("/dashboard");
   }
 
   return (
     <main className="auth-page">
-      <section className="auth-layout">
+      <section className="auth-card">
+        <Link to="/" className="auth-logo">
+          <span><Leaf size={26} /></span>
+          <strong>SmartBin <b>AI</b></strong>
+        </Link>
 
-        <aside className="auth-visual">
-          <Link to="/" className="auth-brand">
-            <span className="auth-brand-icon"><Leaf size={27} /></span>
-            <span>SmartBin <b>AI</b></span>
-          </Link>
+        <div className="auth-heading">
+          <p className="auth-eyebrow">A GREENER FUTURE STARTS HERE</p>
+          <h1>{isSignup ? "Create your account" : "Welcome back"}</h1>
+          <p>
+            {isSignup
+              ? "Join us in building cleaner, smarter communities."
+              : "Sign in to continue to your SmartBin dashboard."}
+          </p>
+        </div>
 
-          <div className="auth-visual-copy">
-            <span className="auth-eyebrow">
-              CLEANER CITIES. BRIGHTER TOMORROWS.
-            </span>
-
-            <h1>
-              Join the Movement for a Cleaner,
-              <span> Greener World.</span>
-            </h1>
-
-            <p>
-              Be part of a smarter waste management system.
-              Together, we can make our cities cleaner and healthier.
-            </p>
-
-            <div className="auth-benefits">
-              <div>
-                <span><Leaf size={22} /></span>
-                <strong>Smart Waste<br />Management</strong>
-              </div>
-              <div>
-                <span><BarChart3 size={22} /></span>
-                <strong>Real-Time<br />Insights</strong>
-              </div>
-              <div>
-                <span><Recycle size={22} /></span>
-                <strong>AI-Powered<br />Classification</strong>
-              </div>
-              <div>
-                <span><Users size={22} /></span>
-                <strong>Cleaner<br />Communities</strong>
-              </div>
-            </div>
-          </div>
-
-          <div className="auth-city" aria-hidden="true">
-            <div className="auth-sun" />
-
-            <div className="auth-skyline">
-              <i /><i /><i /><i /><i /><i />
-            </div>
-
-            <div className="auth-park-hill" />
-            <div className="auth-park-path" />
-
-            <div className="auth-tree auth-tree-one"><i /></div>
-            <div className="auth-tree auth-tree-two"><i /></div>
-
-            <div className="auth-bin">
-              <div className="auth-bin-lid" />
-              <div className="auth-bin-body">
-                <Wifi size={23} />
-                <small>SMART SYSTEM</small>
-                <Recycle size={48} />
-                <b>SmartBin AI</b>
-              </div>
-              <span className="auth-wheel auth-wheel-one" />
-              <span className="auth-wheel auth-wheel-two" />
-            </div>
-
-            <div className="auth-float-card auth-fill-card">
-              <small><Trash2 size={14} /> Bin Fill Level</small>
-              <div className="auth-progress-ring"><b>65%</b></div>
-              <span className="auth-live-dot">Illustrative preview</span>
-            </div>
-
-            <div className="auth-float-card auth-status-card">
-              <span className="auth-status-icon"><Wifi size={18} /></span>
-              <span>
-                <small>Platform</small>
-                <b>Smart monitoring</b>
-              </span>
-            </div>
-          </div>
-
-          <div className="auth-visual-footer">
-            <Leaf size={16} /> Small actions. Smarter cities.
-          </div>
-        </aside>
-
-        <section className="auth-form-panel">
-          <div className="auth-form-inner">
-
-            <Link to="/" className="auth-mobile-brand">
-              <span className="auth-brand-icon"><Leaf size={24} /></span>
-              <span>SmartBin <b>AI</b></span>
-            </Link>
-
-            <div className="auth-form-heading">
-              <span className="auth-heading-icon"><Leaf size={23} /></span>
-              <h2>{isSignup ? "Create Your Account" : "Welcome Back"}</h2>
-              <p>
-                {isSignup
-                  ? "Join SmartBin AI and help build cleaner, smarter cities."
-                  : "Sign in to continue your waste management journey."}
-              </p>
-            </div>
-
-            <div className="auth-tabs" role="tablist">
-              <button
-                type="button"
-                role="tab"
-                aria-selected={isSignup}
-                className={isSignup ? "selected" : ""}
-                onClick={() => {
-                  setMode("signup");
-                  setMessage("");
-                }}
-              >
-                Sign Up
-              </button>
-
-              <button
-                type="button"
-                role="tab"
-                aria-selected={!isSignup}
-                className={!isSignup ? "selected" : ""}
-                onClick={() => {
-                  setMode("signin");
-                  setMessage("");
-                }}
-              >
-                Sign In
-              </button>
-            </div>
-
-            <form className="auth-form" onSubmit={handleSubmit}>
-              {isSignup && (
-                <label className="auth-field">
-                  <span>Full Name</span>
-                  <div className="auth-input-wrap">
-                    <UserRound size={18} />
-                    <input
-                      name="name"
-                      type="text"
-                      placeholder="Enter your full name"
-                      autoComplete="name"
-                      value={form.name}
-                      onChange={updateField}
-                      required
-                    />
-                  </div>
-                </label>
-              )}
-
-              <label className="auth-field">
-                <span>Email Address</span>
-                <div className="auth-input-wrap">
-                  <Mail size={18} />
-                  <input
-                    name="email"
-                    type="email"
-                    placeholder="Enter your email address"
-                    autoComplete="email"
-                    value={form.email}
-                    onChange={updateField}
-                    required
-                  />
-                </div>
-              </label>
-
-              <label className="auth-field">
-                <span>Password</span>
-                <div className="auth-input-wrap">
-                  <LockKeyhole size={18} />
-                  <input
-                    name="password"
-                    type={showPassword ? "text" : "password"}
-                    placeholder={isSignup ? "Create a password" : "Enter your password"}
-                    autoComplete={isSignup ? "new-password" : "current-password"}
-                    minLength={8}
-                    value={form.password}
-                    onChange={updateField}
-                    required
-                  />
-                  <button
-                    type="button"
-                    className="auth-eye"
-                    aria-label="Toggle password visibility"
-                    onClick={() => setShowPassword((value) => !value)}
-                  >
-                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                  </button>
-                </div>
-              </label>
-
-              {isSignup ? (
-                <label className="auth-field">
-                  <span>Confirm Password</span>
-                  <div className="auth-input-wrap">
-                    <LockKeyhole size={18} />
-                    <input
-                      name="confirmPassword"
-                      type={showConfirm ? "text" : "password"}
-                      placeholder="Confirm your password"
-                      autoComplete="new-password"
-                      minLength={8}
-                      value={form.confirmPassword}
-                      onChange={updateField}
-                      required
-                    />
-                    <button
-                      type="button"
-                      className="auth-eye"
-                      aria-label="Toggle confirmation visibility"
-                      onClick={() => setShowConfirm((value) => !value)}
-                    >
-                      {showConfirm ? <EyeOff size={18} /> : <Eye size={18} />}
-                    </button>
-                  </div>
-                </label>
-              ) : (
-                <div className="auth-forgot-row">
-                  <span>Keep your account secure</span>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setMessage("Password reset requires a backend endpoint.")
-                    }
-                  >
-                    Forgot password?
-                  </button>
-                </div>
-              )}
-
-              {isSignup && (
-                <label className="auth-terms">
-                  <input
-                    type="checkbox"
-                    name="accepted"
-                    checked={form.accepted}
-                    onChange={updateField}
-                  />
-                  <span>
-                    I agree to the <a href="#terms">Terms of Service</a> and{" "}
-                    <a href="#privacy">Privacy Policy</a>
-                  </span>
-                </label>
-              )}
-
-              {message && (
-                <p className="auth-message" role="status">{message}</p>
-              )}
-
-              <button className="auth-submit" type="submit">
-                {isSignup ? "Create Account" : "Sign In"}
-                <ArrowRight size={18} />
-              </button>
-            </form>
-
-            <div className="auth-divider"><span>or continue with</span></div>
-
-            <div className="auth-socials">
-              <button
-                type="button"
-                onClick={() => setMessage("Google sign-in is not configured yet.")}
-              >
-                <span className="auth-google-mark">G</span> Google
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setMessage("Microsoft sign-in is not configured yet.")}
-              >
-                <span className="auth-microsoft-mark">
-                  <i /><i /><i /><i />
+        <form onSubmit={handleSubmit} className="auth-form">
+          {isSignup && (
+            <>
+              <label>Full name
+                <span className="auth-input-wrap">
+                  <UserRound size={18} />
+                  <input name="name" value={form.name} onChange={handleChange}
+                    placeholder="Enter your full name" autoComplete="name" required />
                 </span>
-                Microsoft
-              </button>
+              </label>
 
-              <button
-                type="button"
-                onClick={() => setMessage("Apple sign-in is not configured yet.")}
-              >
-                <span className="auth-apple-mark">●</span> Apple
-              </button>
-            </div>
+              <label>Phone number <small>(optional)</small>
+                <span className="auth-input-wrap">
+                  <Phone size={18} />
+                  <input name="phone" type="tel" value={form.phone}
+                    onChange={handleChange} placeholder="Enter phone number" autoComplete="tel" />
+                </span>
+              </label>
+            </>
+          )}
 
-            <p className="auth-switch">
-              {isSignup
-                ? "Already have an account?"
-                : "Don't have an account?"}
+          <label>Email address
+            <span className="auth-input-wrap">
+              <Mail size={18} />
+              <input name="email" type="email" value={form.email} onChange={handleChange}
+                placeholder="you@example.com" autoComplete="email" required />
+            </span>
+          </label>
 
-              <button
-                type="button"
-                onClick={() => {
-                  setMode(isSignup ? "signin" : "signup");
-                  setMessage("");
-                }}
-              >
-                {isSignup ? "Sign In" : "Sign Up"}
-              </button>
-            </p>
+          <label>Password
+            <span className="auth-input-wrap">
+              <LockKeyhole size={18} />
+              <input name="password" type="password" value={form.password}
+                onChange={handleChange} placeholder="At least 8 characters"
+                autoComplete={isSignup ? "new-password" : "current-password"} required />
+            </span>
+          </label>
 
-            <Link to="/" className="auth-back-link">
-              <ArrowRight size={14} /> Back to home
-            </Link>
-          </div>
-        </section>
+          {isSignup && (
+            <label>Confirm password
+              <span className="auth-input-wrap">
+                <LockKeyhole size={18} />
+                <input name="confirmPassword" type="password"
+                  value={form.confirmPassword} onChange={handleChange}
+                  placeholder="Enter password again" autoComplete="new-password" required />
+              </span>
+            </label>
+          )}
+
+          {error && <p className="auth-error" role="alert">{error}</p>}
+
+          <button className="auth-submit" type="submit">
+            {isSignup ? "Create account" : "Sign in"} <ArrowRight size={18} />
+          </button>
+        </form>
+
+        <p className="auth-switch">
+          {isSignup ? "Already have an account?" : "New to SmartBin AI?"}{" "}
+          <Link to={isSignup ? "/login" : "/signup"}>
+            {isSignup ? "Log in" : "Create account"}
+          </Link>
+        </p>
+
+        <p className="auth-back"><Link to="/">← Back to home</Link></p>
+        <p className="auth-notice">
+          Prototype only: account information is stored in this browser.
+          Secure login and password verification require backend authentication.
+        </p>
       </section>
     </main>
   );
